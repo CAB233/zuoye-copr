@@ -3,5 +3,7 @@
   "username": "YanamiChan[bot]",
   "gitAuthor": "YanamiChan[bot] <182213109+YanamiChan[bot]@users.noreply.github.com>",
   "autodiscover": true,
-  "allowedCommands": ["^npx -y deno install$"]
+  "allowedCommands": [
+    "^bash \\.github/scripts/renovate-reset-release\\.bash$"
+  ]
 }

@@ -6,13 +6,14 @@
     ":semanticCommitTypeAll(chore)"
   ],
   "automerge": true,
-  "customDatasources": {
-    "nvchecker": {
-      "defaultRegistryUrlTemplate": "https://github.com/CAB233/myAUR/releases/download/nvchecker/new_ver.json",
-      "transformTemplates": [
-        "{ \"releases\": [{ \"version\": data.'{{packageName}}'.version }] }"
-      ]
-    }
+  "postUpgradeTasks": {
+    "commands": [
+      "bash .github/scripts/renovate-reset-release.bash"
+    ],
+    "fileFilters": [
+      "copr/**/*.spec"
+    ],
+    "executionMode": "branch"
   },
   "customManagers": [
     {
