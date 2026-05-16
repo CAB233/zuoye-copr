@@ -25,6 +25,30 @@
       ],
       "depNameTemplate": "SagerNet/sing-box",
       "datasourceTemplate": "github-tags"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/(^|/)sing-box-testing.spec$/"
+      ],
+      "matchStrings": [
+        "%global\\s+upstream_version\\s+(?<currentValue>\\d+\\.\\d+\\.\\d+-(?:alpha|beta|rc)\\.\\d+)"
+      ],
+      "depNameTemplate": "SagerNet/sing-box",
+      "datasourceTemplate": "github-tags",
+      "extractVersionTemplate": "^v(?<version>\\d+\\.\\d+\\.\\d+-(?:alpha|beta|rc)\\.\\d+)$"
+    }
+  ],
+  "packageRules": [
+    {
+      "matchFileNames": [
+        "copr/sing-box-testing/sing-box-testing.spec"
+      ],
+      "matchPackageNames": [
+        "SagerNet/sing-box"
+      ],
+      "ignoreUnstable": false,
+      "respectLatest": false
     }
   ]
 }
