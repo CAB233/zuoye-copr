@@ -55,11 +55,11 @@ install -Dvm644 release/config/sing-box.sysusers %{buildroot}%{_sysusersdir}/sin
 install -Dvm644 release/config/sing-box.rules -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 install -Dvm644 release/config/sing-box-split-dns.xml %{buildroot}%{_datadir}/dbus-1/system.d/sing-box.conf
 
-%{gobuilddir}/bin/sing-box/sing-box completion bash | \
+%{gobuilddir}/bin/sing-box completion bash | \
     install -Dvm644 /dev/stdin %{buildroot}%{bash_completions_dir}/sing-box
-%{gobuilddir}/bin/sing-box/sing-box completion zsh | \
+%{gobuilddir}/bin/sing-box completion zsh | \
     install -Dvm644 /dev/stdin %{buildroot}%{zsh_completions_dir}/_sing-box
-%{gobuilddir}/bin/sing-box/sing-box completion fish | \
+%{gobuilddir}/bin/sing-box completion fish | \
     install -Dvm644 /dev/stdin %{buildroot}%{fish_completions_dir}/sing-box.fish
 
 %post
