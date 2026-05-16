@@ -1,0 +1,30 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    ":dependencyDashboard",
+    ":semanticCommitTypeAll(chore)"
+  ],
+  "automerge": true,
+  "customDatasources": {
+    "nvchecker": {
+      "defaultRegistryUrlTemplate": "https://github.com/CAB233/myAUR/releases/download/nvchecker/new_ver.json",
+      "transformTemplates": [
+        "{ \"releases\": [{ \"version\": data.'{{packageName}}'.version }] }"
+      ]
+    }
+  },
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/(^|/)sing-box.spec$/"
+      ],
+      "matchStrings": [
+        "Version:\\s*(?<currentValue>\\S+)"
+      ],
+      "depNameTemplate": "SagerNet/sing-box",
+      "datasourceTemplate": "github-tags"
+    }
+  ]
+}
