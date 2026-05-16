@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dnf -y install go-vendor-tools
+dnf -y install go2rpm go-vendor-tools python3-specfile
 spectool -g sing-box.spec
-go_vendor_archive create --config ./go-vendor-tools.toml ./sing-box.spec
+go_vendor_archive create sing-box.spec
 fedpkg srpm

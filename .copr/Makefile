@@ -1,4 +1,4 @@
 srpm:
-    dnf -y install fedora-packager
-    bash ./.srpm.bash
-    cp ./*.src.rpm $(outdir)
+	dnf -y install rpmspectool fedpkg
+	bash ./.srpm.bash
+	cp ./*.src.rpm $(outdir)
