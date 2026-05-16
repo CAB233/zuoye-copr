@@ -2,8 +2,8 @@
 %global debug_package       %{nil}
 %global goipath             github.com/SagerNet/sing-box
 %global gomodulesmode       GO111MODULE=on
-%global upstream_version    %{lua:print((rpm.expand("%version"):gsub("%~", "-", 1)))}
-Version:                    1.14.0~alpha.23
+%global upstream_version    1.14.0-alpha.23
+Version:                    %{lua:print((rpm.expand("%upstream_version"):gsub("%-", "~", 1)))}
 
 %gometa -L -f
 
