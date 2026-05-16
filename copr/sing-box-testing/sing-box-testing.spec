@@ -7,7 +7,7 @@ Version:                    %{lua:print((rpm.expand("%upstream_version"):gsub("%
 %gometa -L -f
 
 Name:           sing-box-testing
-Release:        %autorelease
+Release:        2%{?dist}
 Summary:        The universal proxy platform
 
 License:        BSD-3-Clause AND GPL-3.0-only AND LGPL-3.0-only
