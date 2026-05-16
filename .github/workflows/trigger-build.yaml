@@ -61,7 +61,7 @@ jobs:
               spec_file="$i"
               
               if [ ! -f "$spec_file" ]; then
-                echo "::notice file=$spec_file::跳过已删除的包"
+                echo "::notice::跳过已删除的包：$spec_file"
                 continue
               fi
               
@@ -73,7 +73,7 @@ jobs:
                 }
               ' "$spec_file")"
               if [ -z "$package_name" ]; then
-                echo "::warning file=$spec_file::无法提取包名"
+                echo "::warning::无法提取包名：$spec_file"
                 continue
               fi
             elif [[ "$i" =~ ^[A-Za-z0-9_.+-]+$ ]]; then
@@ -86,7 +86,7 @@ jobs:
                 }
               ' {} + | head -n 1)"
               if [ -z "$spec_file" ]; then
-                echo "::warning::找不到包名对应的 spec: $package_name"
+                echo "::warning::找不到对应的包: $package_name"
                 continue
               fi
             else
@@ -125,5 +125,5 @@ jobs:
         run: |
           # URL 末尾自带斜杠
           # https://docs.pagure.org/copr.copr/user_documentation.html#webhooks
-          echo "::notice::触发构建： ${{ matrix.package }}"
+          echo "::notice::触发构建：${{ matrix.package }}"
           curl -X POST "${{ secrets.COPR_WEBHOOK }}${{ matrix.package }}"
