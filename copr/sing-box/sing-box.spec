@@ -40,7 +40,7 @@ The universal proxy platform.
 
 %build
 _ldflags=$(cat release/LDFLAGS)
-_tags=$(cat release/DEFAULT_BUILD_TAGS | tr ',' ' ')
+_tags=$(cat release/DEFAULT_BUILD_TAGS_OTHERS | tr ',' ' ')
 
 export CC=clang
 export CXX=clang++
