@@ -7,9 +7,12 @@
   ],
   "automerge": true,
   "postUpgradeTasks": {
+    // https://github.com/dotnet/dotnet-buildtools-prereqs-docker/blob/6f9f456afbf7243915a4a6d1a7312db6c1c95f0a/eng/renovate.json
+    // https://github.com/dotnet/dotnet-buildtools-prereqs-docker/blob/6f9f456afbf7243915a4a6d1a7312db6c1c95f0a/eng/update-llvm-checksums.sh
     "commands": [
       "bash .github/scripts/renovate-reset-release.bash"
     ],
+    "dataFileTemplate": "{{{depName}}}\n{{{packageFile}}}",
     "fileFilters": [
       "copr/**/*.spec"
     ],
