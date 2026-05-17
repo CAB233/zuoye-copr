@@ -73,7 +73,7 @@
         "Version:\\s*(?<currentValue>\\S+)"
       ],
       "depNameTemplate": "denoland/deno",
-      "datasourceTemplate": "github-release"
+      "datasourceTemplate": "github-releases"
     },
     {
       "customType": "regex",
@@ -84,7 +84,7 @@
         "Version:\\s*(?<currentValue>\\S+)"
       ],
       "depNameTemplate": "anomalyco/opencode",
-      "datasourceTemplate": "github-release"
+      "datasourceTemplate": "github-releases"
     },
     {
       "customType": "regex",
@@ -95,7 +95,7 @@
         "Version:\\s*(?<currentValue>\\S+)"
       ],
       "depNameTemplate": "openai/codex",
-      "datasourceTemplate": "github-release"
+      "datasourceTemplate": "github-releases"
     }
   ],
   "packageRules": [
