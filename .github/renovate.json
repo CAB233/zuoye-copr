@@ -63,6 +63,17 @@
       ],
       "depNameTemplate": "subframe7536/maple-font",
       "datasourceTemplate": "github-tags"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/(^|/)deno.spec$/"
+      ],
+      "matchStrings": [
+        "Version:\\s*(?<currentValue>\\S+)"
+      ],
+      "depNameTemplate": "denoland/deno",
+      "datasourceTemplate": "github-release"
     }
   ],
   "packageRules": [
