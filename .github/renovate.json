@@ -74,6 +74,17 @@
       ],
       "depNameTemplate": "denoland/deno",
       "datasourceTemplate": "github-release"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/(^|/)opencode.spec$/"
+      ],
+      "matchStrings": [
+        "Version:\\s*(?<currentValue>\\S+)"
+      ],
+      "depNameTemplate": "anomalyco/opencode",
+      "datasourceTemplate": "github-release"
     }
   ],
   "packageRules": [
