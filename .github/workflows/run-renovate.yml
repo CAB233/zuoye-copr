@@ -17,7 +17,65 @@ on:
     - cron: "4 */6 * * *"
 
 jobs:
-  run:
+  nvchecker:
+    runs-on: ubuntu-24.04
+    container:
+      image: archlinux:base-devel
+    permissions:
+      contents: write
+    steps:
+      - name: Install dependencies
+        run: pacman -Syyuu --noconfirm --needed --ignore filesystem nvchecker wget jq
+
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+
+      - name: Set keyfile
+        run: |
+          cat << EOF > .github/keyfile.toml
+          [keys]
+          github = "${{ secrets.GITHUB_TOKEN }}"
+          EOF
+
+      - name: Run Nvchecker
+        run: |
+          wget https://github.com/CAB233/zuoye-copr/releases/download/nvchecker/old_ver.json || true
+          # keyfile 用于提升 GitHub API 请求限额
+          nvchecker --file .github/nvchecker.toml --keyfile .github/keyfile.toml
+          # 精简输出内容
+          jq '.data |= with_entries(.value |= {version: .version})' .github/new_ver.json > .github/temp.json
+          mv .github/temp.json .github/new_ver.json
+          nvcmp --file .github/nvchecker.toml > .github/result.tmp
+          nvtake --file .github/nvchecker.toml --all
+
+      #- name: 推送更新通知
+      #  run: |
+      #    RESULT=$(cat ./.github/result.tmp | sed 's/$/  /') \
+      #    && [[ ! -z $RESULT ]] \
+      #    && curl "https://${{ secrets.SERVERCHAN_UID }}.push.ft07.com/send/${{ secrets.SERVERCHAN_SENDKEY }}.send" \
+      #      --data-urlencode "title=软件包更新" \
+      #      --data-urlencode "desp=$RESULT" \
+      #    || echo "没有发现更新" \
+
+      - name: Get date
+        run: echo "builddate=$(date +'%Y.%m.%d')" >> $GITHUB_OUTPUT
+        id: date
+
+      - name: Upload to GitHub Release
+        uses: ncipollo/release-action@339a81892b84b4eeb0f6e744e4574d79d0d9b8dd # v1.21.0
+        with:
+          artifactErrorsFailBuild: true
+          removeArtifacts: true
+          allowUpdates: true
+          generateReleaseNotes: false
+          tag: nvchecker
+          name: ${{ steps.date.outputs.builddate }}
+          artifacts: "./.github/new_ver.json, ./.github/old_ver.json"
+          prerelease: true
+          body: |
+            Version Record Files
+
+  renovate:
+    needs: nvchecker
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
