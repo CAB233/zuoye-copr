@@ -41,6 +41,17 @@
       "depNameTemplate": "SagerNet/sing-box",
       "datasourceTemplate": "github-tags",
       "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/(^|/)qbittorrent-enhanced-edition.spec$/"
+      ],
+      "matchStrings": [
+        "Version:\\s*(?<currentValue>\\S+)"
+      ],
+      "depNameTemplate": "c0re100/qBittorrent-Enhanced-Edition",
+      "datasourceTemplate": "github-tags"
     }
   ],
   "packageRules": [
