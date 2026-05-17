@@ -45,11 +45,7 @@
       "matchFileNames": [
         "copr/sing-box-testing/sing-box-testing.spec"
       ],
-      "matchDepNames": "SagerNet/sing-box",
-      "matchDatasources": "github-tags",
-      "ignoreUnstable": false,
-      "respectLatest": false,
-      "allowedVersions": "/^([0-9]+).([0-9]+).([0-9]+)?(-[alpha|beta|rc]+).([0-9]+)$/"
+      "ignoreUnstable": true
     }
   ]
 }
