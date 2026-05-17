@@ -85,6 +85,17 @@
       ],
       "depNameTemplate": "anomalyco/opencode",
       "datasourceTemplate": "github-release"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/(^|/)codex.spec$/"
+      ],
+      "matchStrings": [
+        "Version:\\s*(?<currentValue>\\S+)"
+      ],
+      "depNameTemplate": "openai/codex",
+      "datasourceTemplate": "github-release"
     }
   ],
   "packageRules": [
