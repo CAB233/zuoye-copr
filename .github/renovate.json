@@ -52,6 +52,17 @@
       ],
       "depNameTemplate": "c0re100/qBittorrent-Enhanced-Edition",
       "datasourceTemplate": "github-tags"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/(^|/)maple-font.spec$/"
+      ],
+      "matchStrings": [
+        "Version:\\s*(?<currentValue>\\S+)"
+      ],
+      "depNameTemplate": "subframe7536/maple-font",
+      "datasourceTemplate": "github-tags"
     }
   ],
   "packageRules": [
