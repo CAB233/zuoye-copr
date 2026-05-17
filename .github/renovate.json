@@ -15,14 +15,6 @@
     ],
     "executionMode": "branch"
   },
-  "customDatasources": {
-    "nvchecker": {
-      "defaultRegistryUrlTemplate": "https://github.com/CAB233/zuoye-copr/releases/download/nvchecker/new_ver.json",
-      "transformTemplates": [
-        "{ \"releases\": [{ \"version\": data.'{{packageName}}'.version }] }"
-      ]
-    }
-  },
   "customManagers": [
     {
       "customType": "regex",
@@ -32,9 +24,8 @@
       "matchStrings": [
         "Version:\\s*(?<currentValue>\\S+)"
       ],
-      "autoReplaceStringTemplate": "Version:\\s*{{{newValue}}}",
-      "datasourceTemplate": "custom.nvchecker",
-      "depNameTemplate": "sing-box"
+      "depNameTemplate": "SagerNet/sing-box",
+      "datasourceTemplate": "github-tags"
     },
     {
       "customType": "regex",
@@ -42,11 +33,23 @@
         "/(^|/)sing-box-testing.spec$/"
       ],
       "matchStrings": [
-        "%global\\s+upstream_version\\s*(?<currentValue>\\S+)"
+        "%global\\s+upstream_version\\s+(?<currentValue>\\d+\\.\\d+\\.\\d+-(?:alpha|beta|rc)\\.\\d+)"
       ],
-      "autoReplaceStringTemplate": "%global\\s+upstream_version\\s*{{{newValue}}}",
-      "datasourceTemplate": "custom.nvchecker",
-      "depNameTemplate": "sing-box-testing"
+      "depNameTemplate": "SagerNet/sing-box",
+      "datasourceTemplate": "github-tags",
+      "versioningTemplate": "semver"
+    }
+  ],
+  "packageRules": [
+    {
+      "matchFileNames": [
+        "copr/sing-box-testing/sing-box-testing.spec"
+      ],
+      "matchDepNames": "SagerNet/sing-box",
+      "matchDatasources": "github-tags",
+      "ignoreUnstable": false,
+      "respectLatest": false,
+      "allowedVersions": "/^([0-9]+).([0-9]+).([0-9]+)?(-[alpha|beta|rc]+).([0-9]+)$/"
     }
   ]
 }
