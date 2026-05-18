@@ -1,6 +1,11 @@
 #!/bin/bash
+set -euo pipefail
+
+SPEC=sing-box-testing.spec
 
 dnf -y install python3-specfile go2rpm go-vendor-tools
-spectool -g sing-box-testing.spec
-go_vendor_archive create sing-box-testing.spec
+spectool -g "$SPEC"
+
+go_vendor_archive create "$SPEC"
+
 fedpkg srpm
