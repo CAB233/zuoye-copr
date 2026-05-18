@@ -1,6 +1,6 @@
 Name:           qbittorrent-enhanced-edition
 Version:        5.1.3.10
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Bittorrent Client, based on qBittorrent
 
 License:        GPL-2.0-or-later
@@ -32,7 +32,7 @@ Requires:       qt6-qtsvg%{?_isa}
 Recommends:     (qgnomeplatform-qt6%{?_isa} if gnome-shell)
 Recommends:     (qgnomeplatform-qt6%{?_isa} if cinnamon)
 
-Provides:       qbittorrent
+Provides:       qbittorrent = %{?epoch:%{epoch}:}%{version}-%{release}
 Conflicts:      qbittorrent
 
 %description
