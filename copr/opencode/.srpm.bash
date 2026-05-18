@@ -1,4 +1,7 @@
 #!/bin/bash
+set -euo pipefail
 
-spectool -g opencode.spec
+SPEC=opencode.spec
+
+spectool -g "$SPEC"
 fedpkg srpm
