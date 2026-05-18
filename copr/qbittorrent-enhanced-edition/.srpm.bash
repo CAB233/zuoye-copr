@@ -1,4 +1,7 @@
 #!/bin/bash
+set -euo pipefail
 
-spectool -g qbittorrent-enhanced-edition.spec
+SPEC=qbittorrent-enhanced-edition.spec
+
+spectool -g "$SPEC"
 fedpkg srpm
