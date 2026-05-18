@@ -1,4 +1,7 @@
 #!/bin/bash
+set -euo pipefail
 
-spectool -g maple-font.spec
+SPEC=maple-font.spec
+
+spectool -g "$SPEC"
 fedpkg srpm
