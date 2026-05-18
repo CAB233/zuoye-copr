@@ -1,4 +1,7 @@
 #!/bin/bash
+set -euo pipefail
 
-spectool -g codex.spec
+SPEC=codex.spec
+
+spectool -g "$SPEC"
 fedpkg srpm
