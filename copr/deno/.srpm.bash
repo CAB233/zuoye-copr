@@ -1,4 +1,7 @@
 #!/bin/bash
+set -euo pipefail
 
-spectool -g deno.spec
+SPEC=deno.spec
+
+spectool -g "$SPEC"
 fedpkg srpm
