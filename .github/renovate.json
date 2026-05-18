@@ -96,6 +96,17 @@
       ],
       "depNameTemplate": "openai/codex",
       "datasourceTemplate": "github-releases"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/(^|/)ciel.spec$/"
+      ],
+      "matchStrings": [
+        "Version:\\s*(?<currentValue>\\S+)"
+      ],
+      "depNameTemplate": "AOSC-Dev/ciel-rs",
+      "datasourceTemplate": "github-tags"
     }
   ],
   "packageRules": [
