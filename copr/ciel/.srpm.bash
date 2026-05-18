@@ -1,21 +1,23 @@
 #!/bin/bash
+set -euo pipefail
+
+SPEC=ciel.spec
+WORKDIR="$(mktemp -d)"
+# https://github.com/U2FsdGVkX1/fedora-ashell/blob/75cd65b05e667cffc58d39cf346073a7393f4845/vendor.sh
+VERSION="$(rpmspec -q --qf "%{VERSION}" "$SPEC")"
 
 dnf install -y cargo2rpm cargo-vendor-filterer
-spectool -g ciel.spec
+spectool -g "$SPEC"
 
-# https://github.com/U2FsdGVkX1/fedora-ashell/blob/75cd65b05e667cffc58d39cf346073a7393f4845/vendor.sh
-version="$(rpmspec -q --qf "%{VERSION}" ciel.spec)"
-workdir="$(mktemp -d)"
+tar xf "v${VERSION}.tar.gz" -C "$WORKDIR"
 
-tar xf "v${version}.tar.gz" -C "$workdir"
-
-pushd "$workdir/ciel-rs-${version}"
+pushd "$WORKDIR/ciel-rs-${VERSION}"
 cargo-vendor-filterer --versioned-dirs vendor > "${OLDPWD}/vendor.toml"
 tar \
     --sort=name \
     --mtime="@${SOURCE_DATE_EPOCH:-0}" \
     --owner=0 --group=0 --numeric-owner \
-    -cJf "${OLDPWD}/ciel-${version}-vendor.tar.xz" vendor
+    -cJf "${OLDPWD}/ciel-${VERSION}-vendor.tar.xz" vendor
 popd
 
 fedpkg srpm
