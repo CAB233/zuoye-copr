@@ -7,9 +7,8 @@ if [ -z "${RENOVATE_POST_UPGRADE_COMMAND_DATA_FILE:-}" ]; then
     exit 1
 fi
 
-echo "${RENOVATE_POST_UPGRADE_COMMAND_DATA_FILE}"
+echo "RENOVATE_POST_UPGRADE_COMMAND_DATA_FILE: ${RENOVATE_POST_UPGRADE_COMMAND_DATA_FILE}"
 
-dep_name=$(sed -n '1p' "$RENOVATE_POST_UPGRADE_COMMAND_DATA_FILE")
-spec_file=$(sed -n '2p' "$RENOVATE_POST_UPGRADE_COMMAND_DATA_FILE")
+spec_file=$(sed -n '1p' "$RENOVATE_POST_UPGRADE_COMMAND_DATA_FILE")
 
 sed -i -E 's/^(Release:[[:space:]]*)[0-9]+(.*)$/\11%{?dist}/' "$spec_file"

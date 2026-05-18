@@ -11,7 +11,7 @@
     "commands": [
       "bash .github/scripts/renovate-reset-release.bash"
     ],
-    "dataFileTemplate": "{{{depName}}}\n{{{packageFile}}}",
+    "dataFileTemplate": "{{{packageFile}}}",
     "fileFilters": [
       "copr/**/*.spec"
     ],
