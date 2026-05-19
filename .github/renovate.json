@@ -119,6 +119,17 @@
       "depNameTemplate": "papirus-icon-theme",
       "datasourceTemplate": "git-refs",
       "currentValueTemplate": "master"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/(^|/)xcaddy.spec$/"
+      ],
+      "matchStrings": [
+        "Version:\\s*(?<currentValue>\\S+)"
+      ],
+      "depNameTemplate": "caddyserver/xcaddy",
+      "datasourceTemplate": "github-tags"
     }
   ],
   "packageRules": [
