@@ -132,6 +132,19 @@
       ],
       "depNameTemplate": "caddyserver/xcaddy",
       "datasourceTemplate": "github-tags"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/(^|/)fluent-gtk-theme.spec$/"
+      ],
+      "matchStrings": [
+        "%define\\s+commit\\s+(?<currentDigest>[a-f0-9]{40})\\n"
+      ],
+      "packageNameTemplate": "https://github.com/vinceliuice/Fluent-gtk-theme",
+      "depNameTemplate": "Fluent-gtk-theme",
+      "datasourceTemplate": "git-refs",
+      "currentValueTemplate": "master"
     }
   ],
   "packageRules": [
