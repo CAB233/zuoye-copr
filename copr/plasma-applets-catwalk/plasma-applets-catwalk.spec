@@ -25,8 +25,6 @@ BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(KF6I18n)
 BuildRequires:  cmake(KF6CoreAddons)
 
-Requires:       
-
 %description
 Simple plasmoid showing the total CPU usage.
 Visually made like RunCat.
