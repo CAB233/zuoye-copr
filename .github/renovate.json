@@ -123,7 +123,6 @@
   ],
   "packageRules": [
     {
-      //"matchCurrentAge": "> 7 days",
       "matchFileNames": [
         "copr/**/*.spec"
       ],
@@ -134,7 +133,9 @@
         "digest"
       ],
       "automerge": true,
-      "automergeType": "branch"
+      "automergeType": "pr",
+      "platformAutomerge": true,
+      "ignoreTests": true
     },
     {
       "matchFileNames": [
