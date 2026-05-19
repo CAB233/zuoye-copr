@@ -94,7 +94,9 @@
         "Version:\\s*(?<currentValue>\\S+)"
       ],
       "depNameTemplate": "openai/codex",
-      "datasourceTemplate": "github-releases"
+      "datasourceTemplate": "github-releases",
+      "extractVersionTemplate": "^rust-v(?<version>.*)$",
+      "versioningTemplate": "semver"
     },
     {
       "customType": "regex",
