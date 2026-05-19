@@ -145,6 +145,17 @@
       "depNameTemplate": "Fluent-gtk-theme",
       "datasourceTemplate": "git-refs",
       "currentValueTemplate": "master"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/(^|/)qdiskinfo.spec$/"
+      ],
+      "matchStrings": [
+        "Version:\\s*(?<currentValue>\\S+)"
+      ],
+      "depNameTemplate": "edisionnano/QDiskInfo",
+      "datasourceTemplate": "github-tags"
     }
   ],
   "packageRules": [
