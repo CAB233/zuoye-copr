@@ -50,7 +50,9 @@
         "Version:\\s*(?<currentValue>\\S+)"
       ],
       "depNameTemplate": "c0re100/qBittorrent-Enhanced-Edition",
-      "datasourceTemplate": "github-tags"
+      "datasourceTemplate": "github-tags",
+      "extractVersionTemplate": "^release-(?<version>.*)$",
+      "versioningTemplate": "semver"
     },
     {
       "customType": "regex",
