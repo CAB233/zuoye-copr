@@ -7,7 +7,7 @@ Version:                    %{lua:print((rpm.expand("%upstream_version"):gsub("%
 %gometa -L -f
 
 Name:           sing-box-testing
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        The universal proxy platform
 
 License:        BSD-3-Clause AND GPL-3.0-only AND LGPL-3.0-only
@@ -27,8 +27,6 @@ Conflicts:      sing-box
 %description
 The universal proxy platform.
 
-%gopkg
-
 %prep
 %autosetup -p1 -a1 -n sing-box-%{upstream_version}
 
@@ -40,10 +38,11 @@ _tags=$(cat release/DEFAULT_BUILD_TAGS | tr ',' ' ')
 
 export CC=clang
 export CXX=clang++
-export CGO_ENABLED=1
-export GO_LDFLAGS="-X %{goipath}/constant.Version=%{upstream_version} ${_ldflags}"
+# "sagernet" instead of "SagerNet"
+export GO_LDFLAGS="-X github.com/sagernet/sing-box/constant.Version=%{upstream_version} ${_ldflags}"
 export GO_BUILDTAGS="${_tags}"
-export CGO_LDFLAGS="${CGO_LDFLAGS} -fuse-ld=lld"
+export CGO_ENABLED=1
+export CGO_LDFLAGS="%{build_ldflags} -fuse-ld=lld"
 
 %gobuild -o %{gobuilddir}/bin/sing-box ./cmd/sing-box
 
