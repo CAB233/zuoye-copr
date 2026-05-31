@@ -2,7 +2,7 @@
 %global debug_package %{nil}
 
 Name:           opencode
-Version:        1.15.12
+Version:        1.15.13
 Release:        1%{?dist}
 Summary:        The open source coding agent
 
