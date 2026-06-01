@@ -52,7 +52,7 @@
       "depNameTemplate": "c0re100/qBittorrent-Enhanced-Edition",
       "datasourceTemplate": "github-tags",
       "extractVersionTemplate": "^release-(?<version>.*)$",
-      "versioningTemplate": "semver"
+      "versioningTemplate": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)\\.(?<build>\\d+)$"
     },
     {
       "customType": "regex",
