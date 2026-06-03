@@ -158,6 +158,17 @@
       ],
       "depNameTemplate": "edisionnano/QDiskInfo",
       "datasourceTemplate": "github-tags"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/(^|/)klassy.spec$/"
+      ],
+      "matchStrings": [
+        "Version:\\s*(?<currentValue>\\S+)"
+      ],
+      "depNameTemplate": "paulmcauley/klassy",
+      "datasourceTemplate": "github-tags"
     }
   ],
   "packageRules": [

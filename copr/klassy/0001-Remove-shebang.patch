@@ -1,0 +1,21 @@
+From a5b4e62e2abe8996ad1e8f7ac093f92f4e0c56f9 Mon Sep 17 00:00:00 2001
+From: CAB233 <yidaduizuoye@outlook.com>
+Date: Wed, 3 Jun 2026 10:42:27 +0800
+Subject: [PATCH] Remove shebang
+
+---
+ kstyle/config/klassy-settings.desktop | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/kstyle/config/klassy-settings.desktop b/kstyle/config/klassy-settings.desktop
+index 8be85210..37eaa031 100755
+--- a/kstyle/config/klassy-settings.desktop
++++ b/kstyle/config/klassy-settings.desktop
+@@ -1,4 +1,3 @@
+-#!/usr/bin/env xdg-open
+ [Desktop Entry]
+ Type=Application
+ Terminal=false
+-- 
+2.54.0
+
