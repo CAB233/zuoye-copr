@@ -169,6 +169,17 @@
       ],
       "depNameTemplate": "paulmcauley/klassy",
       "datasourceTemplate": "github-tags"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/(^|/)q.spec$/"
+      ],
+      "matchStrings": [
+        "Version:\\s*(?<currentValue>\\S+)"
+      ],
+      "depNameTemplate": "natesales/q",
+      "datasourceTemplate": "github-tags"
     }
   ],
   "packageRules": [
