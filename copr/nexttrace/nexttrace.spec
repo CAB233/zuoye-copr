@@ -46,6 +46,9 @@ export GO_LDFLAGS="-X %{goipath}/config.Version=%{version} -X %{goipath}/config.
 %install
 install -Dvm755 %{gobuilddir}/bin/nexttrace -t %{buildroot}%{_bindir}/
 
+%post
+setcap cap_net_raw,cap_net_admin+eip %{_bindir}/nexttrace
+
 %files
 %license LICENSE
 %doc AGENTS.md CLAUDE.md README.md README_zh_CN.md scripts/regression/README.md
