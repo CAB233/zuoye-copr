@@ -191,6 +191,17 @@
       ],
       "depNameTemplate": "nxtrace/NTrace-core",
       "datasourceTemplate": "github-tags"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/(^|/)lxgwwenkai-fonts.spec$/"
+      ],
+      "matchStrings": [
+        "Version:\\s*(?<currentValue>\\S+)"
+      ],
+      "depNameTemplate": "lxgw/LxgwWenKai",
+      "datasourceTemplate": "github-tags"
     }
   ],
   "packageRules": [
