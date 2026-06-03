@@ -180,6 +180,17 @@
       ],
       "depNameTemplate": "natesales/q",
       "datasourceTemplate": "github-tags"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/(^|/)nexttrace.spec$/"
+      ],
+      "matchStrings": [
+        "Version:\\s*(?<currentValue>\\S+)"
+      ],
+      "depNameTemplate": "nxtrace/NTrace-core",
+      "datasourceTemplate": "github-tags"
     }
   ],
   "packageRules": [
