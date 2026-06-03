@@ -2,7 +2,7 @@
 
 Name:           ciel
 Version:        3.10.4
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A tool for controlling AOSC OS packaging environments
 
 SourceLicense:  MIT
@@ -266,6 +266,7 @@ Requires:       dbus
 Requires:       openssl
 Requires:       xz
 Requires:       squashfs-tools
+Requires:       systemd-container
 
 BuildRequires:  cargo-rpm-macros
 BuildRequires:  gcc
