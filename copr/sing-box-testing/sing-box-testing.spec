@@ -7,7 +7,7 @@ Version:                    %{lua:print((rpm.expand("%upstream_version"):gsub("%
 %gometa -L -f
 
 Name:           sing-box-testing
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        The universal proxy platform
 
 License:        BSD-3-Clause AND GPL-3.0-only AND LGPL-3.0-only
@@ -48,7 +48,6 @@ export CGO_LDFLAGS="%{build_ldflags} -fuse-ld=lld"
 
 %install
 install -Dvm755 %{gobuilddir}/bin/sing-box -t %{buildroot}%{_bindir}/
-install -Dvm644 release/config/config.json -t %{buildroot}%{_sysconfdir}/sing-box/
 install -Dvm644 release/config/sing-box.service -t %{buildroot}%{_unitdir}/
 install -Dvm644 release/config/sing-box@.service -t %{buildroot}%{_unitdir}/
 install -Dvm644 release/config/sing-box.sysusers %{buildroot}%{_sysusersdir}/sing-box.conf
@@ -73,6 +72,7 @@ install -Dvm644 release/config/sing-box-split-dns.xml %{buildroot}%{_datadir}/db
 
 %files
 %license LICENSE
+%doc release/config/config.json
 %{_bindir}/sing-box
 %{_sysconfdir}/sing-box/config.json
 %{_unitdir}/sing-box*.service
