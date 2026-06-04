@@ -1,9 +1,10 @@
 # we're using prebuilt binaries.
 %global debug_package %{nil}
+%global __brp_strip %{nil}
 
 Name:           opencode
 Version:        1.15.13
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        The open source coding agent
 
 License:        MIT
