@@ -74,7 +74,6 @@ install -Dvm644 release/config/sing-box-split-dns.xml %{buildroot}%{_datadir}/db
 %license LICENSE
 %doc release/config/config.json
 %{_bindir}/sing-box
-%{_sysconfdir}/sing-box/config.json
 %{_unitdir}/sing-box*.service
 %{_sysusersdir}/sing-box.conf
 %{_datadir}/polkit-1/rules.d/sing-box.rules
