@@ -6,7 +6,7 @@ Version:                    1.13.13
 %gometa -L -f
 
 Name:           sing-box
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        The universal proxy platform
 
 License:        BSD-3-Clause AND GPL-3.0-only AND LGPL-3.0-only
@@ -32,7 +32,7 @@ The universal proxy platform.
 
 %build
 _ldflags=$(cat release/LDFLAGS)
-_tags=$(cat release/DEFAULT_BUILD_TAGS_OTHERS | tr ',' ' ')
+_tags=$(cat release/DEFAULT_BUILD_TAGS | tr ',' ' ')
 
 export CC=clang
 export CXX=clang++
