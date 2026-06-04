@@ -3,7 +3,7 @@
 
 Name:           opencode
 Version:        1.15.13
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        The open source coding agent
 
 License:        MIT
@@ -13,7 +13,7 @@ Source1:        %{url}/releases/download/v%{version}/opencode-linux-x64.tar.gz
 Source2:        %{url}/releases/download/v%{version}/opencode-linux-arm64.tar.gz
 
 Requires:       git
-Requires:       rust-ripgrep
+Requires:       ripgrep
 
 %description
 The open source coding agent.
