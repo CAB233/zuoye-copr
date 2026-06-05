@@ -1,22 +1,22 @@
 #!/bin/bash
 set -euo pipefail
 
-SPEC=papirus-icon-theme.spec
+SPEC="$(basename $(pwd)).spec"
 REPO=https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
 WORKDIR="$(mktemp -d)"
+_commit="$(grep -E '^%global[[:space:]]+commit[[:space:]]+' "$SPEC" | awk '{print $3}')"
 
 dnf install -y git
 spectool -g "$SPEC"
 
 git clone --filter=tree:0 "$REPO" "$WORKDIR"
 pushd "$WORKDIR"
-upstream_version="$(git tag --sort=-version:refname | head -n1)"
-commit_date="$(git show -s --format=%cd --date=format:%Y%m%d HEAD)"
-commit="$(git rev-parse HEAD)"
+upstream_version="$(git describe --tags --abbrev=0 $_commit)"
+commit_date="$(git show -s --format=%cd --date=format:%Y%m%d $_commit)"
 popd
 
-fedpkg srpm -- \
-    -bs "$SPEC" \
+rpmbuild -bs "$SPEC" \
+    --define "_sourcedir $(pwd)" \
+    --define "_srcrpmdir $(pwd)" \
     --define "upstream_version $upstream_version" \
-    --define "commit_date $commit_date" \
-    --define "commit $commit"
+    --define "commit_date $commit_date"

@@ -1,6 +1,10 @@
-%define upstream_version    20250501
-%define commit_date         20260402
-%define commit              b03ccf6ac078ca8242c1d22d00a0f419b26d84e4
+%{!?upstream_version:
+%global upstream_version    unknown
+}
+%{!?commit_date:
+%global commit_date         20260101
+}
+%global commit              b03ccf6ac078ca8242c1d22d00a0f419b26d84e4
 %global short_commit        %(c=%{commit}; echo ${c:0:7})
 
 Name:           papirus-icon-theme
