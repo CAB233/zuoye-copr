@@ -20,6 +20,7 @@ jobs:
         run: |
           dnf install -y rpmdevtools uv jq
           uv tool install nvchecker@2.20
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
 
       - name: Generate config and keyfile
         run: |
@@ -40,7 +41,7 @@ jobs:
         run: |
           nvchecker --file /tmp/nvchecker/merged.toml --keyfile /tmp/nvchecker/keyfile.toml
           nvcmp --file /tmp/nvchecker/merged.toml --newer --json > /tmp/nvchecker/cmp.json
-          cp -v newver oldver
+          cp -v /tmp/nvchecker/newver /tmp/nvchecker/oldver
 
           if [[ -s /tmp/nvchecker/cmp.json ]]; then
             echo "has_update=true" >> "$GITHUB_OUTPUT"
