@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-SPEC=fcitx5-pinyin-zhwiki.spec
+SPEC="$(basename $(pwd)).spec"
 
 spectool -g "$SPEC"
 fedpkg srpm

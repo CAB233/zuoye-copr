@@ -1,11 +1,10 @@
-# This versions need to be checked manually
-%global upstream_ver 0.3.0
-%global dict_ver 20260416
-
 Name:           fcitx5-pinyin-zhwiki
-Version:        %{upstream_ver}.%{dict_ver}
+Version:        0.3.0.20260416
 Release:        1%{?dist}
 Summary:        Fcitx 5 Pinyin Dictionary from zh.wikipedia.org
+
+%global         upstream_ver    %(v=%{version}; echo ${v:0:5})
+%global         dict_ver        %(v=%{version}; echo ${v:6})
 
 License:        CC-BY-SA-4.0 GFDL-1.3-or-later
 URL:            https://github.com/felixonmars/fcitx5-pinyin-zhwiki
