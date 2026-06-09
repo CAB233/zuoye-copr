@@ -1,0 +1,5 @@
+[ciel]
+source = "github"
+github = "AOSC-Dev/ciel-rs"
+use_latest_tag = true
+prefix = "v"

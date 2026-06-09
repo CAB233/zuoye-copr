@@ -6,7 +6,6 @@ WORKDIR="$(mktemp -d)"
 # https://github.com/U2FsdGVkX1/fedora-ashell/blob/75cd65b05e667cffc58d39cf346073a7393f4845/vendor.sh
 VERSION="$(rpmspec -q --qf "%{VERSION}" "$SPEC")"
 
-dnf install -y cargo2rpm cargo-vendor-filterer
 spectool -g "$SPEC"
 
 tar xf "v${VERSION}.tar.gz" -C "$WORKDIR"

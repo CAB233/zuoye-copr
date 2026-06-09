@@ -1,0 +1,5 @@
+[fluent-gtk-theme]
+source = "git"
+git = "https://github.com/vinceliuice/Fluent-gtk-theme.git"
+branch = "master"
+use_commit = true

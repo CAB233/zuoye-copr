@@ -1,0 +1,5 @@
+[deno]
+source = "github"
+github = "denoland/deno"
+use_latest_release = true
+prefix = "v"

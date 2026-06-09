@@ -1,0 +1,5 @@
+[q]
+source = "github"
+github = "natesales/q"
+use_latest_tag = true
+prefix = "v"

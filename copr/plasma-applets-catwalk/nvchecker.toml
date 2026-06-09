@@ -1,0 +1,5 @@
+[plasma-applets-catwalk]
+source = "git"
+git = "https://invent.kde.org/heddxh/applet-catwalk.git"
+branch = "master"
+use_commit = true

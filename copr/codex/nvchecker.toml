@@ -1,0 +1,5 @@
+[codex]
+source = "github"
+github = "openai/codex"
+use_latest_release = true
+prefix = "rust-v"

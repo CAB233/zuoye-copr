@@ -1,0 +1,5 @@
+[nali]
+source = "github"
+github = "zu1k/nali"
+use_latest_tag = true
+prefix = "v"

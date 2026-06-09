@@ -1,0 +1,5 @@
+[klassy]
+source = "github"
+github = "paulmcauley/klassy"
+use_latest_tag = true
+prefix = "v"

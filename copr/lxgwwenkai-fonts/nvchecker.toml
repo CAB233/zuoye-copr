@@ -1,0 +1,5 @@
+[lxgwwenkai-fonts]
+source = "github"
+github = "lxgw/LxgwWenKai"
+use_latest_release = true
+prefix = "v"

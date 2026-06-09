@@ -1,0 +1,5 @@
+[papirus-icon-theme]
+source = "git"
+git = "https://github.com/PapirusDevelopmentTeam/papirus-icon-theme.git"
+branch = "master"
+use_commit = true
