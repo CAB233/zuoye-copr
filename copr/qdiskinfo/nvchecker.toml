@@ -1,0 +1,4 @@
+[qdiskinfo]
+source = "github"
+github = "edisionnano/QDiskInfo"
+use_latest_tag = true

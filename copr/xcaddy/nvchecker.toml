@@ -1,0 +1,5 @@
+[xcaddy]
+source = "github"
+github = "caddyserver/xcaddy"
+use_latest_tag = true
+prefix = "v"

@@ -1,0 +1,84 @@
+name: Check update
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "4 */6 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    container:
+      image: fedora:44
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+
+      - name: Install dependencies
+        run: |
+          dnf install -y rpmdevtools uv jq
+          uv tool install nvchecker@2.20
+
+      - name: Generate config and keyfile
+        run: |
+          curl -LSso /tmp/nvchecker/oldver --create-dirs "https://github.com/${{ github.repository }}/releases/download/nvchecker/oldver" || true
+
+          echo "[keys]" > /tmp/nvchecker/keyfile.toml
+          echo "github = \"${{ secrets.GITHUB_TOKEN }}\"" >> /tmp/nvchecker/keyfile.toml
+
+          echo "[__config__]" > /tmp/nvchecker/merged.toml
+          echo 'newver = "newver"' >> /tmp/nvchecker/merged.toml
+          echo 'oldver = "oldver"' >> /tmp/nvchecker/merged.toml
+          for i in copr/*/nvchecker.toml; do
+            cat "$i" >> /tmp/nvchecker/merged.toml
+          done
+
+      - name: Check update
+        id: check-update
+        run: |
+          nvchecker --file /tmp/nvchecker/merged.toml --keyfile /tmp/nvchecker/keyfile.toml
+          nvcmp --file /tmp/nvchecker/merged.toml --newer --json > /tmp/nvchecker/cmp.json
+          cp -v newver oldver
+
+          if [[ -s /tmp/nvchecker/cmp.json ]]; then
+            echo "has_update=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_update=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Upload to GitHub Release
+        uses: ncipollo/release-action@339a81892b84b4eeb0f6e744e4574d79d0d9b8dd # v1.21.0
+        with:
+          artifactErrorsFailBuild: true
+          removeArtifacts: true
+          allowUpdates: true
+          generateReleaseNotes: false
+          tag: nvchecker
+          artifacts: "/tmp/nvchecker/oldver"
+          prerelease: true
+          body: |
+            Version Record Files
+
+      - name: Update specs and push
+        if: steps.check-update.outputs.has_update == 'true'
+        run: |
+          git config user.name "YanamiChan[bot]"
+          git config user.email "182213109+YanamiChan[bot]@users.noreply.github.com"
+
+          jq -c '.[]' /tmp/nvchecker/cmp.json | while read -r entry; do
+            status=$(echo "$entry" | jq -r '.delta')
+            package=$(echo "$entry" | jq -r '.name')
+            newver=$(echo "$entry" | jq -r '.newver')
+            oldver=$(echo "$entry" | jq -r '.oldver')
+
+            if [[ "$status" == "new" ]]; then
+              echo "::notice title=$package: update to $newver::$oldver -> $newver"
+              rpmdev-bumpspec "copr/$package/$package.spec" --new="$newver"
+              git add "copr/$package/$package.spec"
+              git commit -m "$package: update to $newver"
+            fi
+          done
+
+          git push

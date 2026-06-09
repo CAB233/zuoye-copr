@@ -1,0 +1,5 @@
+[nexttrace]
+source = "github"
+github = "nxtrace/NTrace-core"
+use_latest_tag = true
+prefix = "v"
