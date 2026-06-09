@@ -2,7 +2,7 @@
 %global debug_package %{nil}
 
 Name:           codex
-Version:        0.138.0
+Version:        0.139.0
 Release:        1%{?dist}
 Summary:        Lightweight coding agent that runs in your terminal
 
@@ -57,4 +57,7 @@ install -Dvm755 codex -t %{buildroot}%{_bindir}/
 %{fish_completions_dir}/codex.fish
 
 %changelog
+* Tue Jun 09 2026 YanamiChan[bot] <182213109+YanamiChan[bot]@users.noreply.github.com> - 0.139.0-1
+- new version
+
 %autochangelog
