@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-SPEC=ciel.spec
+SPEC="$(basename $(pwd)).spec"
 WORKDIR="$(mktemp -d)"
 # https://github.com/U2FsdGVkX1/fedora-ashell/blob/75cd65b05e667cffc58d39cf346073a7393f4845/vendor.sh
 VERSION="$(rpmspec -q --qf "%{VERSION}" "$SPEC")"
