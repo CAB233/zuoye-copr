@@ -1,5 +1,17 @@
+[papirus-icon-theme-tag]
+source = "github"
+github = "PapirusDevelopmentTeam/papirus-icon-theme"
+use_latest_tag = true
+
+[papirus-icon-theme-date]
+source = "cmd"
+cmd = "curl -s https://api.github.com/repos/PapirusDevelopmentTeam/papirus-icon-theme/commits/master | grep -m1 -o '\"date\": \"[^\"]*\"' | sed 's/[^0-9]//g' | cut -c1-8"
+
+[papirus-icon-theme-commit]
+source = "cmd"
+cmd = "curl -s https://api.github.com/repos/PapirusDevelopmentTeam/papirus-icon-theme/commits/master | grep -m1 -o '\"sha\": \"[^\"]*\"' | cut -d'\"' -f4 | cut -c1-7"
+
 [papirus-icon-theme]
-source = "git"
-git = "https://github.com/PapirusDevelopmentTeam/papirus-icon-theme.git"
-branch = "master"
-use_commit = true
+source = "combiner"
+from = ["papirus-icon-theme-tag", "papirus-icon-theme-date", "papirus-icon-theme-commit"]
+format = "$1^git$2.$3"

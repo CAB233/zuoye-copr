@@ -1,16 +1,9 @@
-%{!?upstream_version:
-%global upstream_version    unknown
-}
-%{!?commit_date:
-%global commit_date         20260101
-}
-%global commit              b03ccf6ac078ca8242c1d22d00a0f419b26d84e4
-%global short_commit        %(c=%{commit}; echo ${c:0:7})
-
 Name:           papirus-icon-theme
-Version:        %{upstream_version}^git%{commit_date}.%{short_commit}
+Version:        20250501^git20260609.7138a89
 Release:        1%{?dist}
 Summary:        Free and open source SVG icon theme based on Paper Icon Set
+
+%global         short_commit %(bash -c "echo '%{version}' | sed 's/.*\\.//'")
 
 # Some icons are based on
 # * Paper Icon Theme, CC-BY-SA-4.0
@@ -19,7 +12,7 @@ Summary:        Free and open source SVG icon theme based on Paper Icon Set
 # The rest is GPL-3.0-only; see AUTHORS
 License:        GPL-3.0-only AND CC-BY-SA-4.0 AND LGPL-3.0-or-later
 URL:            https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
-Source:         %{url}/archive/%{commit}/%{name}-%{short_commit}.tar.gz
+Source:         %{url}/archive/%{short_commit}/%{name}-%{short_commit}.tar.gz
 
 BuildArch:      noarch
 BuildRequires:  make
@@ -66,7 +59,9 @@ This package contains the following variants:
  - Papirus Light (light theme with Breeze colors)
 
 %prep
-%autosetup -n %{name}-%{commit}
+%autosetup -c -T
+tar xvf %{S:0}
+cp -rv %{name}-*/* ./
 
 %build
 # stub for rpmlint
