@@ -65,6 +65,9 @@ jobs:
       - name: Update specs and push
         if: steps.check-update.outputs.has_update == 'true'
         run: |
+          git clone --filter=tree:0 --no-tags "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}" repo
+          cd repo
+          git config --local push.default matching
           git config user.name "YanamiChan[bot]"
           git config user.email "182213109+YanamiChan[bot]@users.noreply.github.com"
 
