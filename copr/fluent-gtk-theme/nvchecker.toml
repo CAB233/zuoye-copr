@@ -1,5 +1,19 @@
+[fluent-gtk-theme-tag]
+source = "github"
+github = "vinceliuice/Fluent-gtk-theme"
+use_latest_tag = true
+from_pattern = "-"
+to_pattern = ""
+
+[fluent-gtk-theme-date]
+source = "cmd"
+cmd = "curl -s https://api.github.com/repos/vinceliuice/Fluent-gtk-theme/commits/master | grep -m1 -o '\"date\": \"[^\"]*\"' | sed 's/[^0-9]//g' | cut -c1-8"
+
+[fluent-gtk-theme-commit]
+source = "cmd"
+cmd = "curl -s https://api.github.com/repos/vinceliuice/Fluent-gtk-theme/commits/master | grep -m1 -o '\"sha\": \"[^\"]*\"' | cut -d'\"' -f4 | cut -c1-7"
+
 [fluent-gtk-theme]
-source = "git"
-git = "https://github.com/vinceliuice/Fluent-gtk-theme.git"
-branch = "master"
-use_commit = true
+source = "combiner"
+from = ["fluent-gtk-theme-tag", "fluent-gtk-theme-date", "fluent-gtk-theme-commit"]
+format = "$1^git$2.$3"

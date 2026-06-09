@@ -1,17 +1,13 @@
-%define _upstream_version   2025-04-17
-%define commit_date         20251210
-%define commit              9fc52910aeda73804c41bfcebf2bbd29205a4756
-%global short_commit        %(c=%{commit}; echo ${c:0:7})
-%global upstream_version    %(v=%{_upstream_version}; echo ${v//-/})
-
 Name:           fluent-gtk-theme
-Version:        %{upstream_version}^git%{commit_date}.%{short_commit}
+Version:        20250417^git20251210.9fc5291
 Release:        1%{?dist}
 Summary:        Fluent design gtk theme for linux desktops
 
+%global         short_commit %(bash -c "echo '%{version}' | sed 's/.*\\.//'")
+
 License:        GPL-3.0-only
 URL:            https://github.com/vinceliuice/Fluent-gtk-theme
-Source:         %{url}/archive/%{commit}/Fluent-gtk-theme-%{short_commit}.tar.gz
+Source:         %{url}/archive/%{short_commit}/Fluent-gtk-theme-%{short_commit}.tar.gz
 
 BuildArch:      noarch
 
@@ -24,7 +20,9 @@ Requires:   filesystem
 Requires:   gtk-murrine-engine
 
 %prep
-%autosetup -n Fluent-gtk-theme-%{commit}
+%autosetup -c -T
+tar xvf %{S:0}
+cp -rv Fluent-gtk-theme-*/* ./
 
 %build
 # stub for rpmlint
