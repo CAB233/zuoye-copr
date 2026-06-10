@@ -27,7 +27,7 @@ Simple plasmoid showing the total CPU usage.
 Visually made like RunCat.
 
 %prep
-%autosetup -n applet-catwalk-master
+%autosetup -n applet-catwalk-%{short_commit}
 
 %build
 %cmake -GNinja -Wno-dev
