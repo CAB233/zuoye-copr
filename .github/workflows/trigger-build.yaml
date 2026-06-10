@@ -125,5 +125,5 @@ jobs:
         run: |
           # URL 末尾自带斜杠
           # https://docs.pagure.org/copr.copr/user_documentation.html#webhooks
-          echo "::notice::触发构建：${{ matrix.package }}"
+          echo "::notice title=触发构建::${{ matrix.package }}"
           curl -X POST "${{ secrets.COPR_WEBHOOK }}${{ matrix.package }}"
