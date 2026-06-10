@@ -18,7 +18,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          dnf install -y rpmdevtools uv jq git
+          dnf install --disablerepo=fedora-cisco-openh264 -y rpmdevtools uv jq git
           uv tool install nvchecker@2.20
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
 
