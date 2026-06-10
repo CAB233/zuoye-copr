@@ -3,7 +3,7 @@
 %global __brp_strip %{nil}
 
 Name:           opencode
-Version:        1.16.2
+Version:        1.17.1
 Release:        1%{?dist}
 Summary:        The open source coding agent
 
@@ -44,4 +44,7 @@ install -Dvm755 opencode %{buildroot}%{_bindir}/opencode
 %{bash_completions_dir}/opencode
 
 %changelog
+* Wed Jun 10 2026 YanamiChan[bot] <182213109+YanamiChan[bot]@users.noreply.github.com> - 1.17.1-1
+- new version
+
 %autochangelog
