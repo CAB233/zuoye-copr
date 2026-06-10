@@ -1,0 +1,5 @@
+[zed]
+source = "github"
+github = "zed-industries/zed"
+use_latest_release = true
+prefix = "v"
