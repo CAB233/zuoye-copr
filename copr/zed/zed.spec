@@ -2,7 +2,7 @@
 %global debug_package %{nil}
 
 Name:           zed
-Version:        1.5.5
+Version:        1.6.3
 Release:        1%{?dist}
 Summary:        General-purpose, multiplayer code editor
 
@@ -41,4 +41,7 @@ cp -rv zed.app/share/* %{buildroot}%{_datadir}/
 %{_datadir}/icons/hicolor/
 
 %changelog
+* Wed Jun 10 2026 YanamiChan[bot] <182213109+YanamiChan[bot]@users.noreply.github.com> - 1.6.3-1
+- new version
+
 %autochangelog
