@@ -49,19 +49,6 @@ jobs:
             echo "has_update=false" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Upload to GitHub Release
-        uses: ncipollo/release-action@339a81892b84b4eeb0f6e744e4574d79d0d9b8dd # v1.21.0
-        with:
-          artifactErrorsFailBuild: true
-          removeArtifacts: true
-          allowUpdates: true
-          generateReleaseNotes: false
-          tag: nvchecker
-          artifacts: "/tmp/nvchecker/oldver"
-          prerelease: true
-          body: |
-            Version Record Files
-
       - name: Update specs and push
         if: steps.check-update.outputs.has_update == 'true'
         run: |
@@ -80,9 +67,25 @@ jobs:
             if [[ "$status" == "new" ]]; then
               echo "::notice title=$package: update to $newver::$oldver -> $newver"
               rpmdev-bumpspec "copr/$package/$package.spec" --new="$newver"
+
               git add "copr/$package/$package.spec"
-              git commit -m "$package: update to $newver"
+              if ! git diff --cached --quiet; then
+                git commit -m "$package: update to $newver"
+              fi
             fi
           done
 
           git push
+
+      - name: Upload to GitHub Release
+        uses: ncipollo/release-action@339a81892b84b4eeb0f6e744e4574d79d0d9b8dd # v1.21.0
+        with:
+          artifactErrorsFailBuild: true
+          removeArtifacts: true
+          allowUpdates: true
+          generateReleaseNotes: false
+          tag: nvchecker
+          artifacts: "/tmp/nvchecker/oldver"
+          prerelease: true
+          body: |
+            Version Record Files
