@@ -1,16 +1,13 @@
-%define upstream_version    0
-%define commit_date         20251029
-%define commit              eded6e762d9e2ba7db89aa05e58cd52909e1cd49
-%global short_commit        %(c=%{commit}; echo ${c:0:7})
-
 Name:           plasma-applets-catwalk
-Version:        %{upstream_version}^git%{commit_date}.%{short_commit}
+Version:        0^git20251029.eded6e7
 Release:        1%{?dist}
 Summary:        Simple plasmoid showing the total CPU usage
 
+%global         short_commit %(bash -c "echo '%{version}' | sed 's/.*\\.//'")
+
 License:        GPL-2.0-or-later
 URL:            https://invent.kde.org/heddxh/applet-catwalk
-Source0:        %{url}/-/archive/master/applet-catwalk-master.tar.gz
+Source:         %{url}/-/archive/%{short_commit}/applet-catwalk-%{short_commit}.tar.gz
 
 BuildArch:      noarch
 
