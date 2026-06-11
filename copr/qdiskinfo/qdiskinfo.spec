@@ -48,6 +48,3 @@ cp -v Resource/Theme/AoiNight/Background-300.png dist/theme/bg_dark.png
 %{_bindir}/QDiskInfo
 %{_datadir}/applications/QDiskInfo.desktop
 %{_datadir}/icons/hicolor/scalable/apps/QDiskInfo.svg
-
-%changelog
-%autochangelog
