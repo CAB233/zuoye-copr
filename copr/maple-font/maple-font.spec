@@ -31,6 +31,3 @@ install -Dvm644 %{_builddir}/%{name}-%{version}/*.ttf -t %{buildroot}%{_datadir}
 %files
 %license LICENSE.txt
 %{_datadir}/fonts/maple-font/
-
-%changelog
-%autochangelog
