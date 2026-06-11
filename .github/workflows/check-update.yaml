@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Install dependencies
         run: |
-          dnf install --disablerepo=fedora-cisco-openh264 -y rpmdevtools uv jq git
+          dnf install --disablerepo=fedora-cisco-openh264 -y rpmdevtools uv jq git gh
           uv tool install nvchecker@2.20
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
 
@@ -25,11 +25,21 @@ jobs:
         with:
           client-id: ${{ secrets.APP_CLIENT_ID }}
           private-key: ${{ secrets.APP_PRIVATE_KEY }}
+          permission-contents: write
 
       # https://github.com/stefanzweifel/git-auto-commit-action#commits-made-by-this-action-do-not-trigger-new-workflow-runs
       - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
         with:
           token: "${{ steps.generate-token.outputs.token }}"
+
+      - name: Setup git
+        env:
+          GH_TOKEN: "${{ steps.generate-token.outputs.token }}"
+        run: |
+          git config --global --add safe.directory /__w/${{ github.event.repository.name }}/${{ github.event.repository.name }}
+          git config --global user.name "YanamiChan[bot]"
+          git config --global user.email "182213109+YanamiChan[bot]@users.noreply.github.com"
+          gh auth setup-git
 
       - name: Generate config and keyfile
         run: |
@@ -62,11 +72,6 @@ jobs:
         id: update
         if: steps.check-update.outputs.has_update == 'true'
         run: |
-          # Fix git safe.directory in container
-          git config --global --add safe.directory /__w/${{ github.event.repository.name }}/${{ github.event.repository.name }}
-          git config user.name "YanamiChan[bot]"
-          git config user.email "182213109+YanamiChan[bot]@users.noreply.github.com"
-
           jq -c '.[]' /tmp/nvchecker/cmp.json | while read -r entry; do
             status=$(echo "$entry" | jq -r '.delta')
             package=$(echo "$entry" | jq -r '.name')
