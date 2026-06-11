@@ -58,6 +58,3 @@ Conflicts:      qbittorrent
 %{_datadir}/icons/hicolor/*/status/qbittorrent-tray*
 %{_mandir}/man1/qbittorrent.1*
 %{_mandir}/ru/man1/qbittorrent.1*
-
-%changelog
-%autochangelog
