@@ -82,6 +82,3 @@ install -Dvm644 release/config/sing-box-split-dns.xml %{buildroot}%{_datadir}/db
 %{bash_completions_dir}/sing-box
 %{zsh_completions_dir}/_sing-box
 %{fish_completions_dir}/sing-box.fish
-
-%changelog
-%autochangelog
