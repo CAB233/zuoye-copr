@@ -39,6 +39,3 @@ cp -rv Fluent-gtk-theme-*/* ./
 %license COPYING
 %doc README.md
 %{_datadir}/themes/*
-
-%changelog
-%autochangelog
