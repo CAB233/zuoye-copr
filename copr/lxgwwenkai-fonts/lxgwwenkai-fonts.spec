@@ -28,6 +28,3 @@ install -Dvm644 ./*.ttf -t %{buildroot}%{_datadir}/fonts/lxgwwenkai/
 %files
 %license OFL.txt
 %{_datadir}/fonts/lxgwwenkai/
-
-%changelog
-%autochangelog
