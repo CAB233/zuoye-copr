@@ -35,6 +35,3 @@ install -Dvm644 %{S:3} %{buildroot}%{_datadir}/fcitx5/pinyin/dictionaries/zhwikt
 %files
 %license LICENSE
 %{_datadir}/fcitx5/pinyin/dictionaries/
-
-%changelog
-%autochangelog
