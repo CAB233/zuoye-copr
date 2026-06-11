@@ -60,6 +60,3 @@ setcap cap_net_raw,cap_net_admin+eip %{_bindir}/nexttrace
 %doc skills/nexttrace/references/platform-notes.md
 %doc skills/nexttrace/references/validation.md
 %{_bindir}/nexttrace
-
-%changelog
-%autochangelog
