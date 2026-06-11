@@ -52,7 +52,7 @@ jobs:
           nvcmp --file /tmp/nvchecker/merged.toml --newer --json > /tmp/nvchecker/cmp.json
           cp -v /tmp/nvchecker/newver /tmp/nvchecker/oldver
 
-          if [[ -s /tmp/nvchecker/cmp.json ]]; then
+          if jq -e 'length > 0' /tmp/nvchecker/cmp.json >/dev/null; then
             echo "has_update=true" >> "$GITHUB_OUTPUT"
           else
             echo "has_update=false" >> "$GITHUB_OUTPUT"
