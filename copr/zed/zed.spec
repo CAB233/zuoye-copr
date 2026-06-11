@@ -39,9 +39,3 @@ cp -rv zed.app/share/* %{buildroot}%{_datadir}/
 %{_libexecdir}/zed-editor
 %{_datadir}/applications/dev.zed.Zed.desktop
 %{_datadir}/icons/hicolor/
-
-%changelog
-* Wed Jun 10 2026 YanamiChan[bot] <182213109+YanamiChan[bot]@users.noreply.github.com> - 1.6.3-1
-- new version
-
-%autochangelog
