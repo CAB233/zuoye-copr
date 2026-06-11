@@ -60,6 +60,3 @@ install -Dvm755 %{gobuilddir}/bin/xcaddy -t %{buildroot}%{_bindir}/
 %{bash_completions_dir}/xcaddy
 %{zsh_completions_dir}/_xcaddy
 %{fish_completions_dir}/xcaddy.fish
-
-%changelog
-%autochangelog
