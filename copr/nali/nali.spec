@@ -50,6 +50,3 @@ install -Dvm755 %{gobuilddir}/bin/nali -t %{buildroot}%{_bindir}/
 %{bash_completions_dir}/nali
 %{zsh_completions_dir}/_nali
 %{fish_completions_dir}/nali.fish
-
-%changelog
-%autochangelog
