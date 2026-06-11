@@ -77,6 +77,3 @@ find %{buildroot}%{_datadir}/plasma -maxdepth 6 \( -iname '*klassy*' -o -iname '
 %{_libdir}/qt6/plugins/org.kde.kdecoration3.kcm/klassydecoration/presets/*.klpw
 %{_libdir}/qt6/plugins/org.kde.kdecoration3/org.kde.klassy.so
 %{_libdir}/qt6/plugins/styles/klassy6.so
-
-%changelog
-%autochangelog
