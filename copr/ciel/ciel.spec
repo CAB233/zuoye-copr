@@ -317,6 +317,3 @@ install -Dvm644 completions/ciel.fish %{buildroot}%{fish_completions_dir}/ciel.f
 %{bash_completions_dir}/ciel
 %{zsh_completions_dir}/_ciel
 %{fish_completions_dir}/ciel.fish
-
-%changelog
-%autochangelog
