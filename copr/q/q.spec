@@ -42,6 +42,3 @@ install -Dvm755 %{gobuilddir}/bin/q -t %{buildroot}%{_bindir}/
 %license LICENSE transport/LICENSE
 %doc README.md
 %{_bindir}/q
-
-%changelog
-%autochangelog
