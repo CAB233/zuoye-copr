@@ -113,6 +113,3 @@ done
 %dir %{_datadir}/icons/Papirus-Light
 %{_datadir}/icons/Papirus-Light/*x*
 %ghost %{_datadir}/icons/Papirus-Light/icon-theme.cache
-
-%changelog
-%autochangelog
