@@ -41,6 +41,3 @@ Visually made like RunCat.
 %doc README.md
 %{_datadir}/locale/LC_MESSAGES/
 %{_datadir}/plasma/plasmoids/org.kde.plasma.catwalk/
-
-%changelog
-%autochangelog
