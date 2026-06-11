@@ -47,6 +47,3 @@ install -Dvm755 deno %{buildroot}%{_bindir}/deno
 %{bash_completions_dir}/deno
 %{zsh_completions_dir}/_deno
 %{fish_completions_dir}/deno.fish
-
-%changelog
-%autochangelog
