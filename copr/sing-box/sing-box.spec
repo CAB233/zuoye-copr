@@ -14,7 +14,7 @@ URL:            %{gourl}
 Source0:        https://%{goipath}/archive/v%{version}/v%{version}.tar.gz
 Source1:        %{archivename}-vendor.tar.bz2
 
-BuildRequires:  go-vendor-tools
+BuildRequires:  go-rpm-macros
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  clang
 BuildRequires:  lld
@@ -32,7 +32,7 @@ The universal proxy platform.
 
 %build
 _ldflags=$(cat release/LDFLAGS)
-_tags=$(cat release/DEFAULT_BUILD_TAGS | tr ',' ' ')
+_tags=$(cat release/DEFAULT_BUILD_TAGS_OTHERS | tr ',' ' ')
 
 export CC=clang
 export CXX=clang++
