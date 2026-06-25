@@ -16,7 +16,7 @@ URL:            %{gourl}
 Source0:        https://%{goipath}/archive/v%{upstream_version}/v%{upstream_version}.tar.gz
 Source1:        %{archivename}-vendor.tar.bz2
 
-BuildRequires:  go-vendor-tools
+BuildRequires:  go-rpm-macros
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  clang
 BuildRequires:  lld
