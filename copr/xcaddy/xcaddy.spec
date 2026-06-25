@@ -23,7 +23,7 @@ Source2:        go-vendor-tools.toml
 # https://github.com/caddyserver/xcaddy/pull/262
 Patch0:         0001-Support-setting-version-via-ldflags.patch
 
-BuildRequires:  go-vendor-tools
+BuildRequires:  go-rpm-macros
 
 Requires:       golang
 Requires:       git-core
