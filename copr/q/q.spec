@@ -21,7 +21,7 @@ URL:            %{gourl}
 Source0:        %{gosource}
 Source1:        %{archivename}-vendor.tar.bz2
 
-BuildRequires:  go-vendor-tools
+BuildRequires:  go-rpm-macros
 
 %description %{common_description}
 
