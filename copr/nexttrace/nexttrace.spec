@@ -29,6 +29,7 @@ URL:            %{gourl}
 Source0:        %{gosource}
 Source1:        %{archivename}-vendor.tar.bz2
 
+BuildRequires:  go-rpm-macros
 BuildRequires:  golang >= 1.26.1
 
 %description %{common_description}
