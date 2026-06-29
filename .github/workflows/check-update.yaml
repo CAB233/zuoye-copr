@@ -77,12 +77,15 @@ jobs:
             package=$(echo "$entry" | jq -r '.name')
             newver=$(echo "$entry" | jq -r '.newver')
             oldver=$(echo "$entry" | jq -r '.oldver')
+            spec="copr/$package/$package.spec"
+
+            [[ -f "$spec" ]] || continue
 
             if [[ "$status" == "new" ]]; then
               echo "::notice title=$package: update to $newver::$oldver -> $newver"
-              rpmdev-bumpspec "copr/$package/$package.spec" --new="$newver"
+              rpmdev-bumpspec "$spec" --new="$newver"
 
-              git add "copr/$package/$package.spec"
+              git add "$spec"
               if ! git diff --cached --quiet; then
                 git commit -m "$package: update to $newver"
               fi
