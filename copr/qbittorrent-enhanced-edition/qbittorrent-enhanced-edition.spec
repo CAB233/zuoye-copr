@@ -1,5 +1,5 @@
 Name:           qbittorrent-enhanced-edition
-Version:        5.2.1.10
+Version:        5.2.3.10
 Release:        1%{?dist}
 Summary:        Bittorrent Client, based on qBittorrent
 
