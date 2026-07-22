@@ -1,0 +1,5 @@
+[ciel]
+source = "github"
+github = "ImVaskel/soteria"
+use_latest_tag = true
+prefix = "v"
