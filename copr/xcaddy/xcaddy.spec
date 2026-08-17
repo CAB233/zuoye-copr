@@ -2,7 +2,7 @@
 
 # https://github.com/caddyserver/xcaddy
 %global goipath         github.com/caddyserver/xcaddy
-Version:                0.4.6
+Version:                0.4.7
 
 %gometa -L -f
 
