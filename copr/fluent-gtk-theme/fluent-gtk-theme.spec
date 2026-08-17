@@ -1,5 +1,5 @@
 Name:           fluent-gtk-theme
-Version:        20250417^git20260803.09197ae
+Version:        20250417^git20260817.7a49a46
 Release:        1%{?dist}
 Summary:        Fluent design gtk theme for linux desktops
 
