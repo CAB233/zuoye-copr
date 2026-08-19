@@ -18,11 +18,6 @@ Source0:        %{gosource}
 Source1:        %{archivename}-vendor.tar.bz2
 Source2:        go-vendor-tools.toml
 
-# Inject version string at build time so xcaddy reports the correct
-# version instead of "(devel)" from debug.ReadBuildInfo().
-# https://github.com/caddyserver/xcaddy/pull/262
-Patch0:         0001-Support-setting-version-via-ldflags.patch
-
 BuildRequires:  go-rpm-macros
 
 Requires:       golang
