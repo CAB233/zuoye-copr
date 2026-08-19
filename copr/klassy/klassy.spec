@@ -57,23 +57,13 @@ find %{buildroot}%{_datadir}/plasma -maxdepth 6 \( -iname '*klassy*' -o -iname '
 %doc README.md AUTHORS
 %license LICENSES/*.txt
 %{_bindir}/klassy-settings
-%{_datadir}/applications/kcm_klassydecoration.desktop
-%{_datadir}/applications/klassy-settings.desktop
-%{_datadir}/applications/klassystyleconfig.desktop
+%{_datadir}/applications/*
 %{_datadir}/color-schemes/*.colors
-%{_datadir}/icons/hicolor/scalable/apps/klassy-settings.svgz
-%{_datadir}/icons/klassy*
+%{_datadir}/icons/*
 %{_datadir}/kstyle/themes/klassy.themerc
-%{_datadir}/plasma/desktoptheme/kite-dark
-%{_datadir}/plasma/desktoptheme/kite-light
-%{_datadir}/plasma/layout-templates/org.kde.klassy*
-%{_datadir}/plasma/look-and-feel/org.kde.klassy*
+%{_datadir}/plasma/*
 %{_datadir}/locale/*/LC_MESSAGES/klassy_*.mo
-%{_libdir}/cmake/Klassy/KlassyConfig.cmake
-%{_libdir}/cmake/Klassy/KlassyConfigVersion.cmake
+%{_datadir}/config.kcfg/klassy*
+%{_libdir}/cmake/*
 %{_libdir}/libklassycommon6.so*
-%{_libdir}/qt6/plugins/kstyle_config/klassystyleconfig.so
-%{_libdir}/qt6/plugins/org.kde.kdecoration3.kcm/kcm_klassydecoration.so
-%{_libdir}/qt6/plugins/org.kde.kdecoration3.kcm/klassydecoration/presets/*.klpw
-%{_libdir}/qt6/plugins/org.kde.kdecoration3/org.kde.klassy.so
-%{_libdir}/qt6/plugins/styles/klassy6.so
+%{_libdir}/qt6/plugins/*
