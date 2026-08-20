@@ -19,6 +19,7 @@ Source1:        %{archivename}-vendor.tar.bz2
 Source2:        go-vendor-tools.toml
 
 BuildRequires:  go-rpm-macros
+BuildRequires:  go-vendor-tools
 
 Requires:       golang
 Requires:       git-core
