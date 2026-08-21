@@ -3,7 +3,7 @@
 %global __brp_strip %{nil}
 
 Name:           opencode
-Version:        1.18.19
+Version:        1.18.20
 Release:        1%{?dist}
 Summary:        The open source coding agent
 
