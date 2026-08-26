@@ -2,7 +2,7 @@
 %global debug_package %{nil}
 
 Name:           zed
-Version:        1.16.2
+Version:        1.16.3
 Release:        1%{?dist}
 Summary:        General-purpose, multiplayer code editor
 
