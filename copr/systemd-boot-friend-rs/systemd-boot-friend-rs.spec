@@ -1,6 +1,6 @@
 Name:           systemd-boot-friend-rs
 Version:        0.28.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A kernel version manager for systemd-boot
 
 License:        MIT
@@ -11,6 +11,8 @@ Source2:        vendor.toml
 Source3:        systemd-boot-friend.conf
 
 BuildRequires:  cargo-rpm-macros >= 24
+
+Requires:       systemd-boot-unsigned
 
 %description
 A kernel version manager for systemd-boot
