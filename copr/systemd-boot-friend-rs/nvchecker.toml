@@ -1,4 +1,4 @@
-[soteria]
+[systemd-boot-friend-rs]
 source = "github"
 github = "AOSC-Dev/systemd-boot-friend-rs"
 use_latest_tag = true
