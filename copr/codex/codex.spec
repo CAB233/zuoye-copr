@@ -2,8 +2,8 @@
 %global debug_package %{nil}
 
 Name:           codex
-Version:        0.154.0
-Release:        1%{?dist}
+Version:        0.153.4
+Release:        2%{?dist}
 Summary:        Lightweight coding agent that runs in your terminal
 
 License:        MIT
@@ -11,9 +11,11 @@ URL:            https://github.com/openai/codex
 Source0:        https://raw.githubusercontent.com/openai/codex/refs/tags/rust-v%{version}/README.md
 Source1:        https://raw.githubusercontent.com/openai/codex/refs/tags/rust-v%{version}/LICENSE
 Source2:        %{url}/releases/download/rust-v%{version}/codex-x86_64-unknown-linux-musl.tar.gz
-Source3:        %{url}/releases/download/rust-v%{version}/codex-responses-api-proxy-x86_64-unknown-linux-musl.tar.gz
-Source4:        %{url}/releases/download/rust-v%{version}/codex-aarch64-unknown-linux-musl.tar.gz
+Source3:        %{url}/releases/download/rust-v%{version}/codex-aarch64-unknown-linux-musl.tar.gz
+Source4:        %{url}/releases/download/rust-v%{version}/codex-responses-api-proxy-x86_64-unknown-linux-musl.tar.gz
 Source5:        %{url}/releases/download/rust-v%{version}/codex-responses-api-proxy-aarch64-unknown-linux-musl.tar.gz
+Source6:        %{url}/releases/download/rust-v%{version}/codex-code-mode-host-x86_64-unknown-linux-musl.tar.gz
+Source7:        %{url}/releases/download/rust-v%{version}/codex-code-mode-host-aarch64-unknown-linux-musl.tar.gz
 
 %description
 Lightweight coding agent that runs in your terminal
@@ -24,11 +26,13 @@ cp %{S:0} .
 cp %{S:1} .
 %ifarch x86_64
 tar xf %{S:2}
-tar xf %{S:3}
+tar xf %{S:4}
+tar xf %{S:6}
 %endif
 %ifarch aarch64
-tar xf %{S:4}
+tar xf %{S:3}
 tar xf %{S:5}
+tar xf %{S:7}
 %endif
 
 %build
@@ -36,8 +40,10 @@ tar xf %{S:5}
 
 %install
 mv -v codex-responses-api-proxy-* codex-responses-api-proxy
+mv -v codex-code-mode-host-* codex-code-mode-host
 mv -v codex-*-unknown-linux-musl codex
 install -Dvm755 codex-responses-api-proxy -t %{buildroot}%{_bindir}/
+install -Dvm755 codex-code-mode-host -t %{buildroot}%{_bindir}/
 install -Dvm755 codex -t %{buildroot}%{_bindir}/
 
 %{buildroot}%{_bindir}/codex completion bash | \
@@ -52,6 +58,7 @@ install -Dvm755 codex -t %{buildroot}%{_bindir}/
 %doc README.md
 %{_bindir}/codex
 %{_bindir}/codex-responses-api-proxy
+%{_bindir}/codex-code-mode-host
 %{bash_completions_dir}/codex
 %{zsh_completions_dir}/_codex
 %{fish_completions_dir}/codex.fish
