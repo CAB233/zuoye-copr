@@ -1,6 +1,6 @@
 Name:           systemd-boot-friend-rs
-Version:        0.28.0
-Release:        2%{?dist}
+Version:        0.29.0
+Release:        1%{?dist}
 Summary:        A kernel version manager for systemd-boot
 
 License:        MIT
