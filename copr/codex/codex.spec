@@ -2,8 +2,8 @@
 %global debug_package %{nil}
 
 Name:           codex
-Version:        0.154.0
-Release:        2%{?dist}
+Version:        0.155.0
+Release:        1%{?dist}
 Summary:        Lightweight coding agent that runs in your terminal
 
 License:        MIT
