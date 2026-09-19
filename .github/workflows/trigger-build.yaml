@@ -18,7 +18,7 @@ permissions:
 
 jobs:
   metadata:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     outputs:
       matrix: ${{ steps.packages.outputs.matrix }}
     steps:
@@ -116,7 +116,7 @@ jobs:
   trigger-webhook:
     needs: metadata
     if: needs.metadata.outputs.matrix != '{"include":[]}'
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     strategy:
       fail-fast: false
       matrix: ${{ fromJson(needs.metadata.outputs.matrix) }}
