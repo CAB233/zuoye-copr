@@ -26,18 +26,17 @@ Summary:        NextTrace, an open source visual route tracking CLI tool
 
 License:        GPL-3.0-only
 URL:            %{gourl}
-Source0:        %{gosource}
-Source1:        %{archivename}-vendor.tar.bz2
+Source:         %{gosource}
 
 BuildRequires:  go-rpm-macros
-BuildRequires:  golang >= 1.26.1
+BuildRequires:  golang >= 1.27.1
+BuildRequires:  gcc
 
 %description %{common_description}
 
 %prep
-%autosetup -a1 -n NTrace-core-%{version}
-
-%generate_buildrequires
+%goprep -A
+go mod download -modcacherw
 
 %build
 export GO_LDFLAGS="-X %{goipath}/config.Version=%{version} -X %{goipath}/config.BuildDate=$SOURCE_DATE_EPOCH"
