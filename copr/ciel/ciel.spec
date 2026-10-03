@@ -2,7 +2,7 @@
 
 Name:           ciel
 Version:        3.11.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A tool for controlling AOSC OS packaging environments
 
 SourceLicense:  MIT
@@ -257,9 +257,7 @@ License:        %{shrink:
 }
 
 URL:            https://github.com/AOSC-Dev/ciel-rs
-Source0:        %{url}/archive/v%{version}/v%{version}.tar.gz
-Source1:        ciel-%{version}-vendor.tar.xz
-Source2:        vendor.toml
+Source:         %{url}/archive/v%{version}/v%{version}.tar.gz
 
 Requires:       systemd
 Requires:       dbus
@@ -284,14 +282,12 @@ A tool for controlling AOSC OS packaging environments using
 multi-layer filesystems and containers (version 3) 
 
 %prep
-%autosetup -a1 -n ciel-rs-%{version}
+%autosetup -n ciel-rs-%{version}
 %cargo_prep -N
-
-# include full configuration for vendored dependencies
-cat %{S:2} >> .cargo/config.toml
+%{__cargo} fetch --locked --config net.offline=false
 
 %build
-%cargo_build
+%cargo_build -- --frozen
 %cargo_vendor_manifest
 %{cargo_license_summary}
 %{cargo_license} > LICENSE.dependencies
