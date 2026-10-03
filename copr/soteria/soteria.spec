@@ -1,13 +1,11 @@
 Name:           soteria
 Version:        0.3.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A GTK-based polkit authentication agent
 
 License:        Apache-2.0
 URL:            https://github.com/imvaskel/soteria
-Source0:        %{url}/archive/v%{version}/v%{version}.tar.gz
-Source1:        %{name}-%{version}-vendor.tar.xz
-Source2:        vendor.toml
+Source:         %{url}/archive/v%{version}/v%{version}.tar.gz
 
 BuildRequires:  cargo-rpm-macros >= 24
 BuildRequires:  gettext
@@ -18,14 +16,12 @@ BuildRequires:  polkit-devel
 A GTK-based polkit authentication agent
 
 %prep
-%autosetup -a1
+%autosetup
 %cargo_prep -N
-
-# include full configuration for vendored dependencies
-cat %{S:2} >> .cargo/config.toml
+%{__cargo} fetch --locked --config net.offline=false
 
 %build
-%cargo_build
+%cargo_build -- --frozen
 %cargo_vendor_manifest
 %{cargo_license_summary}
 %{cargo_license} > LICENSE.dependencies
@@ -36,7 +32,7 @@ for file in po/*.po; do
 done
 
 %install
-%cargo_install
+%cargo_install -- --frozen
 
 for file in po/*.po; do
     lang=$(basename $file .po)
