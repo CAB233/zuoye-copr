@@ -28,7 +28,7 @@ Conflicts:      sing-box
 The universal proxy platform.
 
 %prep
-%goprep -A
+%autosetup -n sing-box-%{upstream_version}
 go mod download -modcacherw
 
 %build
