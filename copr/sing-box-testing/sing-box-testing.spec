@@ -6,21 +6,20 @@ Version:                    1.15.0~alpha.10
 %gometa -L -f
 
 Name:           sing-box-testing
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        The universal proxy platform
 
 %global         upstream_version %{lua:print((rpm.expand("%version"):gsub("%~", "-", 1)))}
 
 License:        BSD-3-Clause AND GPL-3.0-only AND LGPL-3.0-only
 URL:            %{gourl}
-Source0:        https://%{goipath}/archive/v%{upstream_version}/v%{upstream_version}.tar.gz
-Source1:        %{archivename}-vendor.tar.bz2
+Source:         https://%{goipath}/archive/v%{upstream_version}/v%{upstream_version}.tar.gz
 
 BuildRequires:  go-rpm-macros
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  clang
 BuildRequires:  lld
-BuildRequires:  golang >= 1.25
+BuildRequires:  golang >= 1.26
 
 Provides:       sing-box = %{version}-%{release}
 Conflicts:      sing-box
@@ -29,9 +28,8 @@ Conflicts:      sing-box
 The universal proxy platform.
 
 %prep
-%autosetup -p1 -a1 -n sing-box-%{upstream_version}
-
-%generate_buildrequires
+%goprep -A
+go mod download -modcacherw
 
 %build
 _ldflags=$(cat release/LDFLAGS)
