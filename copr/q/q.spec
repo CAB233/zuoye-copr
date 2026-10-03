@@ -13,22 +13,21 @@ ODoH.}
 %global godocs          README.md
 
 Name:           q
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A tiny command line DNS client with support for UDP, TCP, DoT, DoH, DoQ and ODoH
 
 License:        Apache-2.0 AND GPL-3.0-only
 URL:            %{gourl}
-Source0:        %{gosource}
-Source1:        %{archivename}-vendor.tar.bz2
+Source:         %{gosource}
 
 BuildRequires:  go-rpm-macros
+BuildRequires:  gcc
 
 %description %{common_description}
 
 %prep
-%autosetup -a1
-
-%generate_buildrequires
+%goprep -A
+go mod download -modcacherw
 
 %build
 export GO_LDFLAGS="-X main.version=%version -X main.date=$SOURCE_DATE_EPOCH"
