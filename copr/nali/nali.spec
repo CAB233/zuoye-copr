@@ -13,22 +13,21 @@ An offline tool for querying IP geographic information and CDN provider.
 %global godocs          README.md README_en.md
 
 Name:           nali
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        An offline tool for querying IP geographic information and CDN provider.
 
 License:        MIT
 URL:            %{gourl}
-Source0:        %{gosource}
-Source1:        %{archivename}-vendor.tar.bz2
+Source:         %{gosource}
 
 BuildRequires:  go-rpm-macros
+BuildRequires:  gcc
 
 %description %{common_description}
 
 %prep
-%autosetup -a1
-
-%generate_buildrequires
+%goprep -A
+go mod download -modcacherw
 
 %build
 export GO_LDFLAGS="-X %{goipath}/internal/constant.Version=%{version}"
