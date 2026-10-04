@@ -1,4 +1,4 @@
-[nali]
+[msedit]
 source = "github"
 github = "microsoft/edit"
 use_latest_tag = true
