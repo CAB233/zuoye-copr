@@ -1,7 +1,7 @@
 %global         build_rustflags %build_rustflags -Clink-arg=-fuse-ld=lld
 
 Name:           ciel
-Version:        3.11.2
+Version:        3.11.3
 Release:        1%{?dist}
 Summary:        A tool for controlling AOSC OS packaging environments
 
