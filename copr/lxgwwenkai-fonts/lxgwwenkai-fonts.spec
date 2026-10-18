@@ -1,5 +1,5 @@
 Name:           lxgwwenkai-fonts
-Version:        1.522
+Version:        1.530
 Release:        1%{?dist}
 Summary:        An unprofessional open-source Chinese font derived from Fontworks' Klee One
 
