@@ -1,5 +1,5 @@
 Name:           fcitx5-pinyin-zhwiki
-Version:        0.3.0.20260416
+Version:        0.3.1.20261018
 Release:        1%{?dist}
 Summary:        Fcitx 5 Pinyin Dictionary from zh.wikipedia.org
 
