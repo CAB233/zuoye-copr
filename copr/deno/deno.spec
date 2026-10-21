@@ -2,7 +2,7 @@
 %global debug_package %{nil}
 
 Name:           deno
-Version:        2.9.7
+Version:        2.9.8
 Release:        1%{?dist}
 Summary:        A modern runtime for JavaScript and TypeScript
 
