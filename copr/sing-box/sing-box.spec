@@ -6,7 +6,7 @@ Version:                    1.14.3
 %gometa -L -f
 
 Name:           sing-box
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        The universal proxy platform
 
 License:        BSD-3-Clause AND GPL-3.0-only AND LGPL-3.0-only
@@ -39,6 +39,9 @@ export GO_LDFLAGS="-X github.com/sagernet/sing-box/constant.Version=%{version} $
 export GO_BUILDTAGS="${_tags}"
 export CGO_ENABLED=1
 export CGO_LDFLAGS="%{build_ldflags} -fuse-ld=lld"
+
+# Update certificates
+make update_certificates
 
 %gobuild -o %{gobuilddir}/bin/sing-box ./cmd/sing-box
 
