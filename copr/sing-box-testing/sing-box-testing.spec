@@ -6,7 +6,7 @@ Version:                    1.15.0~alpha.12
 %gometa -L -f
 
 Name:           sing-box-testing
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        The universal proxy platform
 
 %global         upstream_version %{lua:print((rpm.expand("%version"):gsub("%~", "-", 1)))}
@@ -42,6 +42,9 @@ export GO_LDFLAGS="-X github.com/sagernet/sing-box/constant.Version=%{upstream_v
 export GO_BUILDTAGS="${_tags}"
 export CGO_ENABLED=1
 export CGO_LDFLAGS="%{build_ldflags} -fuse-ld=lld"
+
+# Update certificates
+make update_certificates
 
 %gobuild -o %{gobuilddir}/bin/sing-box ./cmd/sing-box
 
