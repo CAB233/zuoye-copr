@@ -1,6 +1,6 @@
 Name:           plasma-applets-catwalk
 Version:        0^git20251029.eded6e7
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Simple plasmoid showing the total CPU usage
 
 %global         short_commit %(bash -c "echo '%{version}' | sed 's/.*\\.//'")
@@ -19,8 +19,9 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  cmake(Plasma)
 BuildRequires:  cmake(Qt6)
 BuildRequires:  cmake(Qt6Core)
-BuildRequires:  cmake(KF6I18n)
+BuildRequires:  cmake(KF6Config)
 BuildRequires:  cmake(KF6CoreAddons)
+BuildRequires:  cmake(KF6I18n)
 
 %description
 Simple plasmoid showing the total CPU usage.
