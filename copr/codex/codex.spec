@@ -2,7 +2,7 @@
 %global debug_package %{nil}
 
 Name:           codex
-Version:        0.169.0
+Version:        0.170.0
 Release:        1%{?dist}
 Summary:        Lightweight coding agent that runs in your terminal
 
