@@ -1,0 +1,4 @@
+[ouch]
+source = "github"
+github = "ouch-org/ouch"
+use_latest_release = true
