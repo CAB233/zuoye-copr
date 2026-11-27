@@ -1,7 +1,7 @@
 %global         __brp_mangle_shebangs %{nil}
 
 Name:           nub
-Version:        0.11.2
+Version:        0.11.3
 Release:        1%{?dist}
 Summary:        The fast all-in-one Node.js toolkit
 
