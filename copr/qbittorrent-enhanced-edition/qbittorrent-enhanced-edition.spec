@@ -1,6 +1,6 @@
 Name:           qbittorrent-enhanced-edition
-Version:        5.2.4.10
-Release:        2%{?dist}
+Version:        5.3.1.10
+Release:        1%{?dist}
 Summary:        Bittorrent Client, based on qBittorrent
 
 License:        GPL-2.0-or-later
